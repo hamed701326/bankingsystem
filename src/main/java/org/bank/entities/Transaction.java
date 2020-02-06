@@ -3,19 +3,26 @@ package org.bank.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.bank.config.PersistentEntity;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Transaction {
-    private String fromAccountNumber;
-    private String toAccountNumber;
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Transaction extends PersistentEntity<Integer> {
+
+    @Temporal(TemporalType.DATE)
     private Date creationDate;
-    private  Long transferedCreditAmount;
+    @Temporal(TemporalType.TIME)
+    private Date time;
+    private  Long CreditAmount;
     private boolean isSuccessfullyDone;
+
 
 }

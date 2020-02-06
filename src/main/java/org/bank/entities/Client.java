@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -14,5 +16,8 @@ public class Client {
     private int client_id;
     private String name;
     private String nationalId;
+    @OneToMany()
+    private List<Account> accounts;
+
 
 }

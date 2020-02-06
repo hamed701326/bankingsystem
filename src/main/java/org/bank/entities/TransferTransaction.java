@@ -5,16 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-
+import javax.persistence.PrimaryKeyJoinColumn;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Branch {
-    private int branchId;
-    private String branchName;
-    private String bankName;
-    private String MangerName;
-
+@PrimaryKeyJoinColumn
+public class TransferTransaction extends Transaction {
+    private String fromAccountNumber;
+    private String toAccountNumber;
 }
